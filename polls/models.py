@@ -14,6 +14,6 @@ class Question(Document):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
 class Choice(Document):
-    question = ReferenceField(Question)
+    question = ReferenceField(Question, reverse_delete_rule=CASCADE)
     choice_text = StringField(max_length=200)
     votes = IntField()
