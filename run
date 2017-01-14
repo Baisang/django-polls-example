@@ -1,1 +1,1 @@
-gunicorn -w 4 -b 0.0.0.0:8000 mysite.wsgi
+gunicorn -w 4 -b 0.0.0.0:80 mysite.wsgi
