@@ -5,9 +5,11 @@ RUN pip install Django==1.10.2
 RUN pip install argparse==1.2.1
 RUN pip install wsgiref==0.1.2
 
-ADD . /myapp
-WORKDIR /myapp
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+RUN git clone https://github.com/baisang/django-polls-example.git .
 RUN pip install -r requirements.txt
 
-EXPOSE 80
-CMD python manage.py runserver 0.0.0.0:80
+COPY docker-entrypoint.sh .
+ENTRYPOINT ["/usr/src/app/docker-entrypoint.sh"]
