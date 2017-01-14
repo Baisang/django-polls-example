@@ -1,6 +1,8 @@
 from __future__ import unicode_literals
 from mongoengine import *
-connect('django-example')
+from django.conf import settings
+
+connect('django-example', host=settings.MONGO_URI)
 
 
 from django.utils import timezone
